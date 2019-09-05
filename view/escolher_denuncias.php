@@ -23,9 +23,19 @@
 							<th>ID</br></th>
 							<th>TIPO DE OCORRÊNCIA</th>
 						</tr>
+						<?php
+						require "../controller/controller.php";
+						$controlador = new controller();
+						$tabela = $controlador->verLista();
+
+						foreach ($tabela as $key) {
+							$aux = $key["id"];
+							echo "<tr onclick=location.href='ver_denuncias.php?id=$aux'><td>". $key["id"]."</td><td>".$key["tipo_denuncia"]."</td></tr>";
+						}
+
+					?>
 				</table>
 						<a href = "../index.php" class="alert-link" id="cadastroLinkblack"> Voltar ao menu </a> <br>
-						<a href = "ver_denuncias.php?id=1" class="alert-link" id="cadastroVerificador"> verificar </a> <br>
 				</section>
 		</section>
 

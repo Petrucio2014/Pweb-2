@@ -1,10 +1,10 @@
 <?php
 	class conexao{
-
+		var $pdo;
 		function conectar(){
 			$dsn='mysql:host=localhost;dbname=pweb2';
 			$user='root';
-			$pass='';	
+			$pass='';				
 			try {
 				$this->pdo = new pdo($dsn,$user,$pass); 	
 			} catch (PDOException $e) {

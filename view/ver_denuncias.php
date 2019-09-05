@@ -18,14 +18,27 @@
 			<section class= "row justify-content-center">
 
 				<table class="table table-hover" >
-
-						<tr><th>Tipo de ocorrência:</th></tr>
-						<tr><th>Descrição:</th></tr>
-						<tr><th>Data:</th></tr>
-						<tr><th>Hora:</th></tr>
-						<tr><th>Local:</th></tr>
-						<tr><th>Imagens:</th></tr>
-						<tr><th>Vídeos:</th></tr>
+						<?php
+						require "../controller/controller.php";
+						$controlador = new controller();
+						$tabela = $controlador->verDenuncia($_GET['id']);
+						foreach ($tabela as $key) {
+							echo "<tr><th>Tipo de ocorrência:</th></tr>";
+							echo "<tr><td>". $key["tipo_denuncia"]."</td></tr>";
+							echo "<tr><th>Descrição:</th></tr>";
+							echo "<tr><td>". $key["descricao_denuncia"]."</td></tr>";
+							echo "<tr><th>Data:</th></tr>";
+							echo "<tr><td>". $key["data_denuncia"]."</td></tr>";
+							echo "<tr><th>Hora:</th></tr>";
+							echo "<tr><td>". $key["hora_denuncia"]."</td></tr>";
+							echo "<tr><th>Local:</th></tr>";
+							echo "<tr><td>". $key["local_denuncia"]."</td></tr>";
+							echo "<tr><th>Imagens:</th></tr>";
+							echo "<tr><td>". $key["imagem"]."</td></tr>";
+							echo "<tr><th>Vídeos:</th></tr>";
+							echo "<tr><td>". $key["video"]."</td></tr>";
+					}
+					?>						
 				</table>
 				<a href = "../index.php" class="alert-link" id="cadastroLinkblack"> Voltar ao menu </a>
 				</section>

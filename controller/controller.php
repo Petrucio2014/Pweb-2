@@ -13,8 +13,14 @@
 				header("Location: ../view/cad_denuncias.php?denuncia=$verificar");
 			}
 		}
-		function verLista(){}
-		function verDenuncia(){}
+		function verLista(){
+			$this->denunciaDAO = new denunciaDAO();
+			return $this->denunciaDAO->verLista();
+		}
+		function verDenuncia($ide){
+			$this->denunciaDAO = new denunciaDAO();
+			return $this->denunciaDAO->verDenuncia($ide);		
+		}
 	}
 	$controlador = new  controller();
 	if(isset($_GET['cadastrar']) && $_GET['cadastrar'])

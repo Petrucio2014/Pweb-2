@@ -21,10 +21,20 @@
 			$this->imagem = $denuncia->imagem;
 			$this->video = $denuncia->video;
 
-			return $this->conexao->exeSql("INSERT INTO denuncia(tipo_denuncia, descricao_denuncia, data_denuncia, hora_denuncia, local_denuncia, 
+			if($this->conexao->exeSql("INSERT INTO denuncia(tipo_denuncia, descricao_denuncia, data_denuncia, hora_denuncia, local_denuncia, 
 				imagem, video) 
 				VALUES
-				('arroz1','feijao2',null,null,'42','43','44')",true);
+			('$this->tipo','$this->descricao','$this->data','$this->hora','$this->local','$this->imagem','$this->video')",true))
+			{
+				return true;
+			} else return false;
+		}
+
+		function verLista(){
+			return $this->conexao->exeSql("select * from denuncia");
+		}
+		function verDenuncia($ide){
+			return $this->conexao->exeSql("select * from denuncia where id = $ide");
 		}
 	}
 ?>
